@@ -1,6 +1,6 @@
 [project]
 name = "toolx"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -16,6 +16,8 @@ toolx = "toolx:main"
 module-name = "toolx._core"
 python-packages = ["toolx"]
 python-source = "src"
+version-source = "git"
+version-fallback = "error"
 
 [tool.uv]
 cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]

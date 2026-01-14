@@ -16,18 +16,19 @@ toolx = "toolx:main"
 module-name = "toolx._core"
 python-packages = ["toolx"]
 python-source = "src"
-version-source = "git"
-version-fallback = "error"
+
+[tool.setuptools_scm]
 
 [tool.uv]
 cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]
 
 [build-system]
-requires = ["maturin>=1.0,<2.0"]
+requires = ["maturin>=1.0,<2.0", "setuptools-scm"]
 build-backend = "maturin"
 
 [dependency-groups]
 dev = [
     "httpx>=0.28.1",
     "jinja2>=3.1.6",
+    "setuptools-scm>=9.2.2",
 ]

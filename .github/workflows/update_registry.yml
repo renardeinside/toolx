@@ -1,0 +1,37 @@
+name: Update PyPI registry
+
+on:
+    release:
+        types: [published]
+    workflow_dispatch:
+
+jobs:
+    update-registry:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v6
+              with:
+                  enable-cache: true
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+
+            - name: Generate registry
+              run: uv run scripts/generate_registry.py
+
+            # - name: Commit docs
+            #   run: |
+            #       git config user.name "github-actions"
+            #       git config user.email "github-actions@github.com"
+
+            #       git add docs/simple
+            #       git commit -m "Update PyPI registry" || echo "No changes"
+            #       git push

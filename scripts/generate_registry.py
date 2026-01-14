@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 OWNER = "renardeinside"
 REPO = "toolx"
 
-OUTPUT_ROOT = Path("docs/simple")
+OUTPUT_ROOT = Path(".pages/simple")
 TEMPLATES = Path("templates")
 
 RELEASES_API = f"https://api.github.com/repos/{OWNER}/{REPO}/releases"
